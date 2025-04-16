@@ -1,8 +1,9 @@
 package by.cherkas.exam.product.services;
 
+import by.cherkas.exam.exceptions.ProductNotFoundException;
 import by.cherkas.exam.product.Product;
 import by.cherkas.exam.product.ProductRepository;
-import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -18,12 +19,12 @@ public class GetProductService {
         this.productRepository = productRepository;
     }
 
-    @CachePut(value = "productsCache", key = "#id")
+    @Cacheable(value = "productCache")
     public ResponseEntity<Product> getProductById(UUID id){
         Optional<Product> optionalProduct = productRepository.findById(id);
 
         if(optionalProduct.isPresent())
             return ResponseEntity.ok(optionalProduct.get());
-        throw new RuntimeException();
+        throw new ProductNotFoundException();
     }
 }

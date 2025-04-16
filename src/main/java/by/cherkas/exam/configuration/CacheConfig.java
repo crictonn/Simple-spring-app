@@ -24,14 +24,20 @@ public class CacheConfig {
     public CacheManager cacheManager(){
         ConcurrentMapCacheManager manager = new ConcurrentMapCacheManager();
         manager.setAllowNullValues(false);
-        manager.setCacheNames(Arrays.asList("productCache"));
+        manager.setCacheNames(Arrays.asList("productCache", "productsCache"));
         return manager;
     }
 
     @CacheEvict(value = "productCache", allEntries = true)
-    @Scheduled(fixedDelay = 5*1000*60*60, initialDelay = 0)
+    @Scheduled(fixedDelay = 1000 * 60 * 60, initialDelay = 0)
     public void evictProductCache(){
-        logger.info("eviction cache");
+        logger.info("Evicting product cache");
+    }
+
+    @CacheEvict(value = "productsCache", allEntries = true)
+    @Scheduled(fixedDelay = 5000 * 60 * 60, initialDelay = 0)
+    public void evictProductsCache(){
+        logger.info("Evicting all products cache");
     }
 
 }

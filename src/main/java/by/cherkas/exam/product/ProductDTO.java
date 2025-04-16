@@ -2,14 +2,10 @@ package by.cherkas.exam.product;
 
 import by.cherkas.exam.category.Category;
 import by.cherkas.exam.region.Regions;
-import jakarta.persistence.Column;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Date;
 import java.util.UUID;
 
 @Getter
@@ -17,6 +13,7 @@ import java.util.UUID;
 @AllArgsConstructor
 public class ProductDTO {
     private UUID id;
+    private String name;
     private String description;
     private Double price;
     private String manufacturer;
@@ -25,6 +22,7 @@ public class ProductDTO {
 
     public ProductDTO(Product product) {
         this.id = product.getId();
+        this.name = product.getName();
         this.description = product.getDescription();
         this.price = product.getPrice();
         this.manufacturer = product.getManufacturer();

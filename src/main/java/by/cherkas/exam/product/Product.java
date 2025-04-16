@@ -3,6 +3,8 @@ package by.cherkas.exam.product;
 import by.cherkas.exam.category.Category;
 import by.cherkas.exam.region.Regions;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.NotNull;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -22,7 +24,10 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
+    @NotNull
+    private String name;
     private String description;
+    @DecimalMin(value = "0.0")
     private Double price;
     private String manufacturer;
 
