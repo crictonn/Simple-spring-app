@@ -42,4 +42,14 @@ public class Product {
 
     @Enumerated
     private Regions region;
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", manufacturer='" + manufacturer + '\'' +
+                ", region=" + region +
+                '}';
+    }
 }
