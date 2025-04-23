@@ -4,7 +4,6 @@ import by.cherkas.exam.category.Category;
 import by.cherkas.exam.category.CategoryRepository;
 import by.cherkas.exam.product.ProductDTO;
 import by.cherkas.exam.product.ProductRepository;
-import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;

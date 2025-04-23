@@ -29,13 +29,13 @@ public class CacheConfig {
     }
 
     @CacheEvict(value = "productCache", allEntries = true)
-    @Scheduled(fixedDelay = 1000 * 60 * 60, initialDelay = 0)
+    @Scheduled(fixedDelay = 1000 * 60, initialDelay = 0)
     public void evictProductCache(){
         logger.info("Evicting product cache");
     }
 
     @CacheEvict(value = "productsCache", allEntries = true)
-    @Scheduled(fixedDelay = 5000 * 60 * 60, initialDelay = 0)
+    @Scheduled(fixedDelay = 5000 * 60, initialDelay = 0)
     public void evictProductsCache(){
         logger.info("Evicting all products cache");
     }

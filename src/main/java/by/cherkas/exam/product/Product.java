@@ -25,6 +25,7 @@ public class Product {
     private UUID id;
 
     @NotNull
+    @Column(unique = true)
     private String name;
     private String description;
     @DecimalMin(value = "0.0")

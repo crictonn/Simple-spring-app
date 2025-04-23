@@ -3,6 +3,7 @@ package by.cherkas.exam.product.services;
 import by.cherkas.exam.product.Product;
 import by.cherkas.exam.product.ProductRepository;
 import by.cherkas.exam.validators.ProductValidator;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +17,7 @@ public class SaveProductService {
         this.productRepository = productRepository;
     }
 
+    @CacheEvict(value = "productsCache", allEntries = true)
     public ResponseEntity<Product> saveProduct(Product product){
         ProductValidator.execute(product);
         product.setCreationTime(new Date(System.currentTimeMillis()));
